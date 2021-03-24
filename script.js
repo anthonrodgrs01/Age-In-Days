@@ -191,3 +191,84 @@ function rpsFrontEnd(humanImageChoice, botImageChoice , finalmessage){
     
 }
 
+
+//Challenge 4: Change the color of all buttons
+
+var all_buttons = document.getElementsByTagName('button');
+var copyAllbuttons = [];
+for(let i = 0;i<all_buttons.length;i++){
+    copyAllbuttons.push(all_buttons[i].classList[1]);
+}
+console.log(copyAllbuttons);
+function buttonColorChange(buttonThingy){
+    
+    
+    if(buttonThingy.value === 'red'){
+        buttonsRed();
+        
+    }else if(buttonThingy.value === 'green'){
+        buttonsGreen();
+        
+    }else if(buttonThingy.value === 'reset'){
+        resetAllButtons();
+        
+        
+    }else if(buttonThingy.value === 'yellow'){
+        buttonsYellow();
+    }else if(buttonThingy.value === 'random'){
+        randomColors();
+    }
+}
+function buttonsRed(){
+    
+        for(let i =0; i< all_buttons.length;i++){
+            all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+            all_buttons[i].classList.add('btn-danger');
+        }
+}
+
+function buttonsGreen(){
+    
+        for(let i =0; i< all_buttons.length;i++){
+            all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+            all_buttons[i].classList.add('btn-success');
+        }
+
+
+
+}
+
+function buttonsYellow(){
+    for(let i = 0; i< all_buttons.length;i++){
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-warning');
+    }
+}
+function resetAllButtons(){
+    for(let i =0; i< all_buttons.length;i++){
+            all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+            all_buttons[i].classList.add(copyAllbuttons[i]);
+            
+        }
+        console.log(all_buttons);
+
+}
+
+function randomColors(){
+    let choice = ['btn-primary','btn-danger','btn-success','btn-warning'];
+    for(let i = 0; i<all_buttons.length;i++){
+        let randomNumber = Math.floor(Math.random() * 4);
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(choice[randomNumber]);
+        
+    }
+}
+
+
+
+
+
+
+
+  
+
