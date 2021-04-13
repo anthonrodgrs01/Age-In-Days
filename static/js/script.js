@@ -378,18 +378,25 @@ function showScore(activePlayer){
     }
 }
 
-function dealerLogic(){
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve,ms));
+}
+
+async function dealerLogic(){
     blackJackGame['isStand'] = true;
+
+    while(DEALER['score'] < 16 && blackJackGame['isStand'] === true){
     card = randomCard();
     showCard(card,DEALER);
     updateScore(card, DEALER);
     showScore(DEALER);
-
-    if(DEALER['score'] > 15){
-        blackJackGame['turnsOver'] = true;
-        let winner = computeWinner();
-        showResult(winner);
+    await sleep(1000);
     }
+        
+    blackJackGame['turnsOver'] = true;
+    let winner = computeWinner();
+    showResult(winner);
+
 }
 
 function computeWinner(){
